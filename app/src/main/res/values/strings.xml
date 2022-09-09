@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">My Application</string>
     <string-array name="selections">
-        <item>Digits</item>
+        <item>Digits </item>
         <item>Operations</item>
-        <item>Functions 1</item>
+        <item>Functions 1 </item>
         <item>Functions 2</item>
-        <item>Constants </item>
+        <item>Constants</item>
     </string-array>
 </resources>
