@@ -48,21 +48,21 @@ class MainActivity : AppCompatActivity() {
                         n=9
                         sValue='d'
                         findViewById<TableLayout>(R.id.tableDigits).alpha= 1F
-                        findViewById<TableLayout>(R.id.tableFunctions2).bringToFront()
+                        findViewById<TableLayout>(R.id.tableDigits).bringToFront()
                     }
                     "Operations"->{
                         m=10
                         n=16
                         sValue='o'
                         findViewById<TableLayout>(R.id.tableOperations).alpha= 1F
-                        findViewById<TableLayout>(R.id.tableFunctions2).bringToFront()
+                        findViewById<TableLayout>(R.id.tableOperations).bringToFront()
                     }
                     "Functions 1"->{
                         m=17
                         n=26
                         sValue='1'
                         findViewById<TableLayout>(R.id.tableFunctions1).alpha= 1F
-                        findViewById<TableLayout>(R.id.tableFunctions2).bringToFront()
+                        findViewById<TableLayout>(R.id.tableFunctions1).bringToFront()
                     }
                     "Functions 2"->{
                         m=27
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                         n=46
                         sValue='c'
                         findViewById<TableLayout>(R.id.tableConstants).alpha= 1F
-                        findViewById<TableLayout>(R.id.tableFunctions2).bringToFront()
+                        findViewById<TableLayout>(R.id.tableConstants).bringToFront()
                     }
                     else->{
                         m=0
@@ -107,19 +107,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun buttonClicked(b: Button, s: Char): String {
         return when (s) {
-            'd', 'c' -> { // digits or constants
+            'd' -> { // digits
                 b.text as String
             }
             '1', '2' -> { // functions
                 " ${b.text} ( "
             }
-            'o' -> { // operations
+            'o', 'c' -> { // operations and constants
                 " ${b.text} "
             }
             else -> {
                 ""
             }
         }
+    }
+    
+    private fun guideClicked(){
+
     }
 
 
