@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -103,6 +104,11 @@ class MainActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.output).text = output
             }
         }
+
+        findViewById<ImageButton>(R.id.buttonHelp).setOnClickListener{
+            val intent = Intent(this@MainActivity,HelperActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun buttonClicked(b: Button, s: Char): String {
@@ -121,10 +127,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    
-    private fun guideClicked(){
-
-    }
-
 
 }
