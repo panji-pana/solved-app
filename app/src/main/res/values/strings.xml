@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="returns_the_value_of_arcsin_with_an_input_in_radians">Returns the value of arcsin with an input in radians</string>
+    <string name="sin">sin</string>
+    <string name="utilises_the_sine_function_and_returns_the_value_in_radians">Utilises the sine function and returns the value in radians</string>
+    <string name="cos">cos</string>
+    <string name="utilises_the_cosine_function_and_returns_the_value_in_radians">Utilises the cosine function and returns the value in radians</string>
+    <string name="tan">tan</string>
+    <string name="utilises_the_tangent_function_and_returns_the_value_in_radians">Utilises the tangent function and returns the value in radians</string>
+    <string name="log">log</string>
+    <string name="utilises_the_log_10_function_also_known_as_lg_and_returns_the_result">Utilises the log_10 function also known as lg and returns the result</string>
+    <string name="ln">ln</string>
+    <string name="utilises_the_natural_logarithm_function_also_known_as_log_e_and_returns_the_result">Utilises the natural logarithm function also known as log_e and returns the result</string>
+    <string name="asin">asin</string>
+    <string name="acos">acos</string>
+    <string name="returns_the_value_of_arccos_with_an_input_in_radians">Returns the value of arccos with an input in radians</string>
+    <string name="atan">atan</string>
+    <string name="returns_the_value_of_arctan_with_an_input_in_radians">Returns the value of arctan with an input in radians</string>
     <string-array name="selections">
         <item>Digits </item>
         <item>Operations</item>
