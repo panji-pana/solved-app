@@ -16,6 +16,8 @@
     <string name="returns_the_value_of_arccos_with_an_input_in_radians">Returns the value of arccos with an input in radians</string>
     <string name="atan">atan</string>
     <string name="returns_the_value_of_arctan_with_an_input_in_radians">Returns the value of arctan with an input in radians</string>
+    <string name="submit">Submit</string>
+    <string name="_2">2</string>
     <string-array name="selections">
         <item>Digits </item>
         <item>Operations</item>

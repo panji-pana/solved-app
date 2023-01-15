@@ -1,18 +1,22 @@
 package com.example.myapplication
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var undoStack = Stack<Int>()
+        var redoStack = Stack<String>()
+        redoOrUndoChanged(undoStack,redoStack)
 
         var buttons: Array<Button> = arrayOf()
 
@@ -88,7 +92,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 for(i in m..n){
-                    println(buttons[i])
                     buttons[i].isEnabled = true
                 }
             }
@@ -102,12 +105,51 @@ class MainActivity : AppCompatActivity() {
             button.setOnClickListener {
                 output += buttonClicked(b = button, s = sValue)
                 findViewById<TextView>(R.id.output).text = output
+
+                redoStack = Stack<String>()
+                undoStack.push(button.text.length)
+
+                redoOrUndoChanged(undoStack,redoStack)
             }
+        }
+
+
+        findViewById<ImageButton>(R.id.buttonUndo).setOnClickListener {
+            val undoReturn = undo(undoStack, output)
+            undoStack = undoReturn.first
+            redoStack.push(undoReturn.second)
+            output = undoReturn.third
+            findViewById<TextView>(R.id.output).text = output
+            redoOrUndoChanged(undoStack,redoStack)
+        }
+
+        findViewById<ImageButton>(R.id.buttonRedo).setOnClickListener {
+            val redoReturn = redo(redoStack, output)
+            redoStack = redoReturn.first
+            output = redoReturn.second
+            undoStack.push(redoReturn.third)
+            findViewById<TextView>(R.id.output).text = output
+            redoOrUndoChanged(undoStack,redoStack)
         }
 
         findViewById<ImageButton>(R.id.buttonHelp).setOnClickListener{
             val intent = Intent(this@MainActivity,HelperActivity::class.java)
             startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.buttonSubmit).setOnClickListener{
+            val calc = Calculator()
+            val shunt = SYA()
+            val x = shunt.sya(output)
+            val y = calc.calculate(x)
+            val input: Float = calc.calculate(shunt.sya(output))
+            println("SYA: ${shunt.sya(output)}")
+            println("Calculation: ${calc.calculate(shunt.sya(output))}")
+            val intent = Intent(this@MainActivity,NonAlgebraOutActivity::class.java)
+            intent.putExtra("input",output)
+            intent.putExtra("output",input.toString())
+            startActivity(intent)
+            output = ""
         }
     }
 
@@ -125,6 +167,42 @@ class MainActivity : AppCompatActivity() {
             else -> {
                 ""
             }
+        }
+    }
+
+    private fun undo(undoStack: Stack<Int>, text: String): Triple<Stack<Int>,String,String>{
+        val n = undoStack.pop()
+        val lastNChars = text.substring(startIndex = text.length - n)
+        val newText = text.substring(0, text.length-n)
+
+        return Triple(undoStack, lastNChars, newText)
+    }
+
+    private fun redo(redoStack: Stack<String>, text: String): Triple<Stack<String>,String,Int>{
+        val change = redoStack.pop()
+        val newText = text + change
+
+        return Triple(redoStack,newText,change.length)
+    }
+
+    private fun redoOrUndoChanged(undoStack: Stack<Int>, redoStack: Stack<String>){
+        val undo = findViewById<ImageButton>(R.id.buttonUndo)
+        val redo = findViewById<ImageButton>(R.id.buttonRedo)
+
+        if(undoStack.isEmpty()){
+            undo.alpha = 0.25F
+            undo.isEnabled = false
+        }else{
+            undo.alpha = 1F
+            undo.isEnabled = true
+        }
+
+        if(redoStack.isEmpty()){
+            redo.alpha = 0.25F
+            redo.isEnabled = false
+        }else{
+            redo.alpha = 1F
+            redo.isEnabled = true
         }
     }
 

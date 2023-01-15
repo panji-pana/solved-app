@@ -148,7 +148,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@id/con_ln"
+                android:id="@+id/con_ln"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -179,7 +179,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@id/con_asin"
+                android:id="@+id/con_asin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -210,7 +210,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@id/con_acos"
+                android:id="@+id/con_acos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -241,7 +241,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@id/con_atan"
+                android:id="@+id/con_atan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
